@@ -13,6 +13,6 @@ RUN CGO_ENABLED=0 \
     BuildTime=$(date +%FT%T%z) \
     go build -ldflags="-s -w -X $VersionPath.gitCommit=$GitCommit -X $VersionPath.buildTime=$BuildTime"
 
-FROM alpine:latest
+FROM alpine:3.18.3
 COPY --from=rttys /rttys-build/rttys /usr/bin/rttys
 ENTRYPOINT ["/usr/bin/rttys"]
